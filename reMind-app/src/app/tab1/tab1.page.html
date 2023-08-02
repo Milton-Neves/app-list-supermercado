@@ -1,0 +1,69 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tela de Lista de Compras
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tela de Lista de Compras</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-list>
+      <!-- <ion-item>
+        <ion-input label="Adicione um novo item:" value="Ex.: Feijão" [(ngModel)]="novoItem"></ion-input>
+        <ion-input label="Marca:" value="Ex.: Feijão carioca" [(ngModel)]="novaMarca"></ion-input>
+        <ion-input label="Descrição:" value="Ex.: Feijão carioca" [(ngModel)]="novoDescricao"></ion-input>
+        <ion-input label="Quantidade:" value="Ex.: Feijão carioca" [(ngModel)]="novoQuantidade"></ion-input>
+        <ion-input label="Preço:" value="Ex.: Feijão carioca" [(ngModel)]="novoPreco"></ion-input>
+
+        <ion-button (click)="adicionarItem()">Adicionar</ion-button>
+      </ion-item> -->
+      <ion-accordion-group *ngFor="let item of items; let i = index;">
+        <ion-accordion value={{item.id}}>
+          <ion-item slot="header">
+            <ion-button color="dark" fill="clear" expand="block">
+              <ion-icon name="information-circle-outline"></ion-icon>
+            </ion-button>
+            <ion-label class="{{(!item.isCompleted)?'done': ''}}"> {{item.nome}}</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>Produto: {{item.nome}}
+                </ion-card-title>
+                <ion-card-subtitle>Descrição: {{item.descricao}} </ion-card-subtitle>
+                <ion-card-subtitle>Marca: {{item.marca}} </ion-card-subtitle>
+
+                <ion-card-subtitle class="ion-align-self-end">
+                  <div>Já adiquiriu? Clique aqui
+                    <ion-checkbox labelPlacement="end" (click)="excluirItem(i)"></ion-checkbox>
+                  </div>
+                </ion-card-subtitle>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-list>
+                  <ion-item>
+                    <ion-thumbnail slot="start">
+                      <img alt="Silhouette of mountains"
+                        src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+                    </ion-thumbnail>
+                    <ion-label>Quantidade: {{item.quantidade}} </ion-label>
+                    <ion-label>Preço: {{item.preco}} </ion-label>
+                  </ion-item>
+                  <ion-button (click)="removerItem(i)">Excluir</ion-button>
+                </ion-list>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </ion-accordion>
+      </ion-accordion-group>
+
+    </ion-list>
+  </ion-content>
+
+</ion-content>

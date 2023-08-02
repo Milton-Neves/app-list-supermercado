@@ -1,0 +1,7 @@
+{
+  "name": "reMind-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
