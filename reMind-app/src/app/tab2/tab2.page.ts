@@ -51,5 +51,14 @@ export class Tab2Page {
         false
       )
     )
+    this.resetFields();
+  }
+
+  resetFields() {
+    this.novoItem = '';
+    this.novoDescricao = '';
+    this.novaMarca = '';
+    this.novoQuantidade = '';
+    this.novoPreco = '';
   }
 }
