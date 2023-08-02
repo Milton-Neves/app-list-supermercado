@@ -23,13 +23,13 @@
 
         <ion-button (click)="adicionarItem()">Adicionar</ion-button>
       </ion-item> -->
-      <ion-accordion-group *ngFor="let item of items; let i = index;">
+      <ion-accordion-group *ngFor="let item of itens; let i = index;">
         <ion-accordion value={{item.id}}>
           <ion-item slot="header">
             <ion-button color="dark" fill="clear" expand="block">
               <ion-icon name="information-circle-outline"></ion-icon>
             </ion-button>
-            <ion-label class="{{(!item.isCompleted)?'done': ''}}"> {{item.nome}}</ion-label>
+            <ion-label class="{{(!item.isCompleted)?'': 'done'}}"> {{item.nome}}</ion-label>
           </ion-item>
           <div class="ion-padding" slot="content">
             <ion-card>
@@ -41,7 +41,8 @@
 
                 <ion-card-subtitle class="ion-align-self-end">
                   <div>Já adiquiriu? Clique aqui
-                    <ion-checkbox labelPlacement="end" (click)="excluirItem(i)"></ion-checkbox>
+                    <ion-checkbox labelPlacement="end" [checked]="item.isCompleted"
+                    (click)="changeIsComplete(item.id)"></ion-checkbox>
                   </div>
                 </ion-card-subtitle>
               </ion-card-header>
@@ -55,7 +56,7 @@
                     <ion-label>Quantidade: {{item.quantidade}} </ion-label>
                     <ion-label>Preço: {{item.preco}} </ion-label>
                   </ion-item>
-                  <ion-button (click)="removerItem(i)">Excluir</ion-button>
+                  <ion-button (click)="removerItem(item.id)">Excluir</ion-button>
                 </ion-list>
               </ion-card-content>
             </ion-card>
